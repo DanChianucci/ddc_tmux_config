@@ -21,7 +21,7 @@ setup_config(){
   tmux set -g renumber-windows on    # renumber windows when a window is closed
   tmux set -g set-titles on          # set terminal title
   tmux set -g display-panes-time 800 # slightly longer pane indicators display time
-  tmux set -g display-time 2000      # slightly longer status messages display time
+  tmux set -g display-time 1000      # slightly longer status messages display time
   tmux set -g status-interval 10     # redraw status line every 10 seconds
 
   # activity
@@ -32,7 +32,7 @@ setup_config(){
   tmux set -g prefix2 C-a
   tmux bind C-a send-prefix -2
 
-  tmux bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+  tmux bind-key r run-shell 'tmux source-file ~/.tmux.conf; tmux display-message "Sourced .tmux.conf!"'
 
   # create session
   tmux bind C-c new-session
