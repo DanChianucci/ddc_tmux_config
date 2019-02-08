@@ -81,9 +81,9 @@ setup_left_status(){
   tmux set -g status-left \
 "#[fg=$txt_color ,bg=$hd1_color] #S "\
 "#[fg=$hd1_color ,bg=$hd2_color]"\
-"#[fg=$txt_color ,bg=$hd2_color] #(whoami) "\
+"#[fg=$txt_color ,bg=$hd2_color] #I:#P "\
 "#[fg=$hd2_color ,bg=$hd3_color]"\
-"#[fg=$txt_color ,bg=$hd3_color] #I:#P "\
+"#[fg=$txt_color ,bg=$hd3_color] #{?client_prefix,prefix,#{?pane_in_mode, copy ,normal}} "\
 "#[fg=$hd3_color ,bg=$bar_color]"
 }
 
