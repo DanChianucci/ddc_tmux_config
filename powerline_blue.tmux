@@ -14,7 +14,20 @@ theme_color=blue
 
 # Status update interval
 setup_basic_config(){
-  tmux set -g status-interval 1
+  # -- display -------------------------------------------------------------------
+  tmux set -g base-index 1           # start windows numbering at 1
+  tmux setw -g pane-base-index 1     # make pane numbering consistent with windows
+  tmux setw -g automatic-rename on   # rename window to reflect current program
+  tmux set -g renumber-windows on    # renumber windows when a window is closed
+  tmux set -g set-titles on          # set terminal title
+  tmux set -g display-panes-time 800 # slightly longer pane indicators display time
+  tmux set -g display-time 1000      # slightly longer status messages display time
+  tmux set -g status-interval 1      # redraw status every second
+
+
+  # activity
+  tmux set -g monitor-activity on
+  tmux set -g visual-activity off
 }
 
 
@@ -79,11 +92,11 @@ setup_left_status(){
   tmux set -g status-left-bg $bar_color
   tmux set -g status-left-length 40
   tmux set -g status-left \
-"#[fg=$txt_color ,bg=$hd1_color] #S "\
-"#[fg=$hd1_color ,bg=$hd2_color]"\
-"#[fg=$txt_color ,bg=$hd2_color] #I:#P "\
-"#[fg=$hd2_color ,bg=$hd3_color]"\
-"#[fg=$txt_color ,bg=$hd3_color] #{?client_prefix,prefix,#{?pane_in_mode, copy ,normal}} "\
+"#[fg=$txt_color ,bg=$hd1_color] #S " \
+"#[fg=$hd1_color ,bg=$hd2_color]" \
+"#[fg=$txt_color ,bg=$hd2_color] #I:#P " \
+"#[fg=$hd2_color ,bg=$hd3_color]" \
+"#[fg=$txt_color ,bg=$hd3_color] #{?client_prefix,prefix,#{?pane_in_mode, copy ,normal}} " \
 "#[fg=$hd3_color ,bg=$bar_color]"
 }
 
@@ -93,11 +106,11 @@ setup_right_status(){
   tmux set -g status-right-bg $bar_color
   tmux set -g status-right-length 150
   tmux set -g status-right \
-"#[fg=$hd3_color ,bg=$bar_color]"\
-"#[fg=$txt_color ,bg=$hd3_color] %-I:%M:%S "\
-"#[fg=$hd2_color ,bg=$hd3_color]"\
-"#[fg=$txt_color ,bg=$hd2_color] %d-%b-%y "\
-"#[fg=$hd1_color ,bg=$hd2_color]"\
+"#[fg=$hd3_color ,bg=$bar_color]" \
+"#[fg=$txt_color ,bg=$hd3_color] %-I:%M:%S " \
+"#[fg=$hd2_color ,bg=$hd3_color]" \
+"#[fg=$txt_color ,bg=$hd2_color] %d-%b-%y " \
+"#[fg=$hd1_color ,bg=$hd2_color]" \
 "#[fg=$txt_color ,bg=$hd1_color] #h "
 }
 
