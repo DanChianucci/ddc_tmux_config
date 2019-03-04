@@ -52,8 +52,8 @@ setup_colors(){
   tmux set -g window-status-activity-fg $bar_color
 
   #Window Styles
-  # tmux set -g window-style        "fg=default, bg=$inactive_bg_color"
-  # tmux set -g window-active-style "fg=default, bg=$active_bg_color"
+  tmux set -g window-style        "fg=default, bg=$inactive_bg_color"
+  tmux set -g window-active-style "fg=default, bg=$active_bg_color"
 
   # Pane border
   tmux set -g pane-border-fg $theme_color
@@ -91,13 +91,13 @@ setup_left_status(){
   tmux set -g status-left-fg $txt_color
   tmux set -g status-left-bg $bar_color
   tmux set -g status-left-length 40
-  tmux set -g status-left \
-"#[fg=$txt_color ,bg=$hd1_color] #S " \
-"#[fg=$hd1_color ,bg=$hd2_color]" \
-"#[fg=$txt_color ,bg=$hd2_color] #I:#P " \
-"#[fg=$hd2_color ,bg=$hd3_color]" \
-"#[fg=$txt_color ,bg=$hd3_color] #{?client_prefix,prefix,#{?pane_in_mode, copy ,normal}} " \
-"#[fg=$hd3_color ,bg=$bar_color]"
+  tmux set -g status-left "$(printf "%s" \
+    "#[fg=$txt_color ,bg=$hd1_color] #S " \
+    "#[fg=$hd1_color ,bg=$hd2_color]" \
+    "#[fg=$txt_color ,bg=$hd2_color] #I:#P " \
+    "#[fg=$hd2_color ,bg=$hd3_color]" \
+    "#[fg=$txt_color ,bg=$hd3_color] #{?client_prefix,prefix,#{?pane_in_mode, copy ,normal}} " \
+    "#[fg=$hd3_color ,bg=$bar_color]")"
 }
 
 setup_right_status(){
@@ -105,13 +105,13 @@ setup_right_status(){
   tmux set -g status-right-fg $txt_color
   tmux set -g status-right-bg $bar_color
   tmux set -g status-right-length 150
-  tmux set -g status-right \
-"#[fg=$hd3_color ,bg=$bar_color]" \
-"#[fg=$txt_color ,bg=$hd3_color] %-I:%M:%S " \
-"#[fg=$hd2_color ,bg=$hd3_color]" \
-"#[fg=$txt_color ,bg=$hd2_color] %d-%b-%y " \
-"#[fg=$hd1_color ,bg=$hd2_color]" \
-"#[fg=$txt_color ,bg=$hd1_color] #h "
+  tmux set -g status-right "$(printf "%s" \
+    "#[fg=$hd3_color ,bg=$bar_color]" \
+    "#[fg=$txt_color ,bg=$hd3_color] %-I:%M:%S " \
+    "#[fg=$hd2_color ,bg=$hd3_color]" \
+    "#[fg=$txt_color ,bg=$hd2_color] %d-%b-%y " \
+    "#[fg=$hd1_color ,bg=$hd2_color]" \
+    "#[fg=$txt_color ,bg=$hd1_color] #h ")"
 }
 
 
