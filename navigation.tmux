@@ -7,8 +7,10 @@ setup_pane_nav(){
   tmux unbind '"'
   tmux unbind '%'
   tmux bind '-' split-window -v   # split current window horizontally
-  tmux bind '|' split-window -h   # split current window vertically
+  tmux bind '\' split-window -h   # split current window vertically
 
+  tmux bind '_' split-window -f -v   # split current window horizontally
+  tmux bind '|' split-window -f -h   # split current window vertically
 
   #Alt-arrow : Switch Panes
   tmux bind -n 'M-Left'  select-pane -L
