@@ -34,8 +34,7 @@ setup_basic_config(){
 setup_colors(){
   # Basic status bar colors
   tmux set -g status-justify centre
-  tmux set -g status-fg $theme_color
-  tmux set -g status-bg $bar_color
+  tmux set -g status-style "fg=$theme_color,bg=$bar_color"
 
 
   # Window status
@@ -44,24 +43,20 @@ setup_colors(){
   tmux set -g window-status-separator ""
 
   # Current window status
-  tmux set -g window-status-current-bg $theme_color
-  tmux set -g window-status-current-fg $bar_color
+  tmux set -g window-status-current-style "fg=$theme_color,bg=$bar_color"
 
   # Window with activity status
-  tmux set -g window-status-activity-bg $theme_color
-  tmux set -g window-status-activity-fg $bar_color
+  tmux set -g window-status-activity-style "fg=$theme_color, bg=$bar_color"
 
   #Window Styles
   tmux set -g window-style        "fg=default, bg=$inactive_bg_color"
   tmux set -g window-active-style "fg=default, bg=$active_bg_color"
 
   # Pane border
-  tmux set -g pane-border-fg $theme_color
-  tmux set -g pane-border-bg $active_bg_color
+  tmux set -g pane-border-style "fg=$theme_color,bg=$active_bg_color"
 
   # Active pane border
-  tmux set -g pane-active-border-fg $theme_color
-  tmux set -g pane-active-border-bg $active_bg_color
+  tmux set -g pane-active-border-style "fg=$theme_color,bg=$active_bg_color"
 
   # Pane number indicator
   tmux set -g display-panes-colour white
@@ -72,25 +67,21 @@ setup_colors(){
 
 
   # Message
-  tmux set -g message-fg $txt_color
-  tmux set -g message-bg $theme_color
+  tmux set -g message-style "fg=$txt_color,bg=$theme_color"
 
   # Command message
-  tmux set -g message-command-fg $txt_color
-  tmux set -g message-command-bg $theme_color
+  tmux set -g message-command-style "fg=$txt_color,bg=$theme_color"
 
   # Mode
-  tmux set -g mode-fg $txt_color
-  tmux set -g mode-bg $theme_color
+  tmux set -g mode-style "fg=$txt_color,bg=$theme_color"
 }
 
 
 
 setup_left_status(){
   # Left side of status bar
-  tmux set -g status-left-fg $txt_color
-  tmux set -g status-left-bg $bar_color
-  tmux set -g status-left-length 40
+  tmux set -g status-left-style "fg=$txt_color,bg=$bar_color"
+  tmux set -g status-left-length 150
   tmux set -g status-left "$(printf "%s" \
     "#[fg=$txt_color ,bg=$hd1_color] #S " \
     "#[fg=$hd1_color ,bg=$hd2_color]" \
@@ -102,8 +93,7 @@ setup_left_status(){
 
 setup_right_status(){
   # Right side of status bar
-  tmux set -g status-right-fg $txt_color
-  tmux set -g status-right-bg $bar_color
+  tmux set -g status-right-style "fg=$txt_color,bg=$bar_color"
   tmux set -g status-right-length 150
   tmux set -g status-right "$(printf "%s" \
     "#[fg=$hd3_color ,bg=$bar_color]" \
